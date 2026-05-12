@@ -1,13 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk'
 import { createClient } from '@supabase/supabase-js'
 
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_KEY!
-)
-
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
-
 // In-memory rate limiter — resets on cold start, fine for personal use
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>()
 const RATE_LIMIT = 20        // requests
@@ -155,6 +148,9 @@ Be bold, specific, and willing to make strong reads. 700-900 words.`,
 }
 
 export async function POST(req: Request) {
+  const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_KEY!)
+  const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+
   // Rate limiting
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown'
   if (isRateLimited(ip)) {

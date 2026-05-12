@@ -7,12 +7,13 @@ import { SkipRateChart } from '@/components/SkipRateChart'
 import { AnalysisPanel } from '@/components/AnalysisPanel'
 import { TopTracksPanel } from '@/components/TopTracksPanel'
 
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_KEY!
-)
+export const dynamic = 'force-dynamic'
 
 async function getData() {
+  const supabase = createClient(
+    process.env.SUPABASE_URL!,
+    process.env.SUPABASE_KEY!
+  )
   const [yearly, topArtists, topTracks, hourly, skipRate] = await Promise.all([
     supabase.rpc('plays_per_year'),
     supabase.rpc('top_artists', { limit_n: 20 }),

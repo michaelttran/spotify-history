@@ -1,8 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
 
-const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_KEY!)
-
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>()
 const RATE_LIMIT = 60
 const RATE_WINDOW = 3_600_000
@@ -32,6 +30,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Invalid uri' }, { status: 400 })
   }
 
+  const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_KEY!)
   const { data, error } = await supabase.rpc('track_stats', { p_uri: uri })
   if (error) {
     console.error('[track_stats error]', error.code)
