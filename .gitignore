@@ -216,3 +216,16 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+/Spotify Extended Streaming History/*
+
+# Next.js
+.next/
+out/
+node_modules/
+.env.local
+.env
+
+# Vercel
+.vercel
