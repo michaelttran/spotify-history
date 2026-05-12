@@ -1,12 +1,11 @@
 import { createClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
 
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_KEY!
-)
-
 export async function GET() {
+  const supabase = createClient(
+    process.env.SUPABASE_URL!,
+    process.env.SUPABASE_KEY!
+  )
   const [yearlyRes, topArtistsRes, topTracksRes, platformRes, hourlyRes, skipRes] =
     await Promise.all([
       supabase.rpc('plays_per_year'),
