@@ -25,17 +25,32 @@ export async function POST(req: Request) {
 
   const body = await req.json()
   const uri = body?.uri
-
   if (typeof uri !== 'string' || uri.length > 200) {
     return NextResponse.json({ error: 'Invalid uri' }, { status: 400 })
   }
 
   const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_KEY!)
+
+  // Return cached result if it exists
+  const { data: cached } = await supabase
+    .from('track_cache')
+    .select('stats')
+    .eq('uri', uri)
+    .single()
+
+  if (cached?.stats) {
+    return NextResponse.json(cached.stats, { headers: { 'X-Cache': 'HIT' } })
+  }
+
+  // Cache miss — fetch from Supabase
   const { data, error } = await supabase.rpc('track_stats', { p_uri: uri })
   if (error) {
     console.error('[track_stats error]', error.code)
     return NextResponse.json({ error: 'Failed to load track stats' }, { status: 500 })
   }
 
-  return NextResponse.json(data)
+  // Persist to cache
+  await supabase.from('track_cache').upsert({ uri, stats: data })
+
+  return NextResponse.json(data, { headers: { 'X-Cache': 'MISS' } })
 }

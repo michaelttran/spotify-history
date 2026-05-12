@@ -107,10 +107,7 @@ function TrackDetail({ stats, rank }: { stats: TrackStats; rank: number }) {
     }}>
 
       {/* Big stats row */}
-      <div style={{
-        display: 'flex', gap: '2.5rem', marginBottom: '1.5rem',
-        paddingBottom: '1.25rem', borderBottom: '1px solid var(--border)',
-      }}>
+      <div className="td-big-stats">
         <BigStat value={stats.total_plays.toLocaleString()} label="total plays" />
         <BigStat value={`${Math.round(hours).toLocaleString()}h`} label="listened" />
         <BigStat value={`${days.toFixed(1)} days`} label="of audio, straight" />
@@ -118,7 +115,7 @@ function TrackDetail({ stats, rank }: { stats: TrackStats; rank: number }) {
       </div>
 
       {/* Two-col: meta + chart */}
-      <div style={{ display: 'grid', gridTemplateColumns: '180px 1fr', gap: '2rem', marginBottom: '1.25rem' }}>
+      <div className="td-grid">
 
         {/* Left: timeline metadata */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

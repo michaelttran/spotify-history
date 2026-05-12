@@ -114,7 +114,7 @@ export default async function Home() {
     <div style={{ background: 'var(--bg)', minHeight: '100vh' }}>
 
       {/* ── Hero ── */}
-      <header style={{ position: 'relative', overflow: 'hidden', borderBottom: '1px solid var(--border)', padding: '5.5rem 2.5rem 4.5rem' }}>
+      <header className="hero-section">
         {/* Ambient glows */}
         <div style={{
           position: 'absolute', top: -200, right: -140,
@@ -175,7 +175,7 @@ export default async function Home() {
         </div>
       </header>
 
-      <main style={{ maxWidth: 1100, margin: '0 auto', padding: '3rem 2.5rem 4rem' }}>
+      <main className="page-main">
 
         {/* ── Insight chips ── */}
         {chips.length > 0 && (
@@ -198,7 +198,7 @@ export default async function Home() {
         )}
 
         {/* ── Stat cards ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: '4rem' }}>
+        <div className="grid-stats section-gap">
           <StatCard label="Total Plays" value={totalPlays.toLocaleString()} sub="April 2013 — May 2026" accent />
           <StatCard label="Hours Listened" value={Math.round(totalHours).toLocaleString()} sub={`${totalDays} days of audio`} />
           <StatCard label="Peak Year" value={String(peakYear?.year ?? '—')} sub={`${peakYear?.plays?.toLocaleString()} plays`} />
@@ -206,7 +206,7 @@ export default async function Home() {
         </div>
 
         {/* ── 01 Listening Timeline ── */}
-        <section style={{ marginBottom: '4rem' }}>
+        <section className="section-gap">
           <SectionHeader num="01" title="Listening Timeline" sub="plays & hours across 13 years" />
           <div style={{ ...card, padding: '1.75rem' }}>
             <YearlyChart data={yearly} />
@@ -214,7 +214,7 @@ export default async function Home() {
         </section>
 
         {/* ── 02 Top Artists  |  03 When You Listen + 04 Skip Rate ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: '4rem' }}>
+        <div className="grid-two section-gap">
           <section>
             <SectionHeader num="02" title="Top Artists" sub="all time · full history" />
             <div style={{ ...card, padding: '1.25rem 0.875rem' }}>
@@ -239,7 +239,7 @@ export default async function Home() {
         </div>
 
         {/* ── 05 Most Played Tracks ── */}
-        <section style={{ marginBottom: '4rem' }}>
+        <section className="section-gap">
           <SectionHeader num="05" title="Most Played Tracks" sub="all time · click any track to expand" />
           <TopTracksPanel tracks={topTracks} />
         </section>

@@ -116,7 +116,7 @@ export function AnalysisPanel() {
       </div>
 
       {/* Content area */}
-      <div style={{ padding: '2rem 2.25rem 2.5rem', minHeight: 440, maxHeight: 640, overflowY: 'auto' }}>
+      <div className="analysis-content">
 
         {/* Section header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2rem' }}>
