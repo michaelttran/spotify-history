@@ -220,14 +220,14 @@ export async function POST(req: Request) {
           controller.enqueue(encoder.encode(chunk.delta.text))
         }
       }
-      controller.close()
-
-      // Persist to cache after stream completes
+      // Persist to cache before closing so the function stays alive for the write
       if (accumulated) {
         await supabase
           .from('analysis_cache')
           .upsert({ section, content: accumulated })
       }
+
+      controller.close()
     },
   })
 
