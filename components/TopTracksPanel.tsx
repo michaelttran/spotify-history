@@ -102,8 +102,8 @@ function TrackDetail({ stats, rank }: { stats: TrackStats; rank: number }) {
   return (
     <div className="fade-in" style={{
       padding: '1.5rem 1.5rem 1.75rem',
-      background: 'rgba(200,169,110,0.02)',
-      borderTop: '1px solid rgba(200,169,110,0.1)',
+      background: 'rgba(29,185,84,0.02)',
+      borderTop: '1px solid rgba(29,185,84,0.1)',
     }}>
 
       {/* Big stats row */}
@@ -155,7 +155,7 @@ function TrackDetail({ stats, rank }: { stats: TrackStats; rank: number }) {
                     borderRadius: 8, fontSize: 11, fontFamily: 'DM Mono, monospace',
                   }}
                   labelStyle={{ color: '#e8e4dc', marginBottom: 4 }}
-                  itemStyle={{ color: '#c8a96e' }}
+                  itemStyle={{ color: '#1DB954' }}
                   formatter={(v: any) => [v.toLocaleString(), 'plays']}
                 />
                 <Bar dataKey="plays" radius={[3, 3, 0, 0]}>
@@ -163,8 +163,8 @@ function TrackDetail({ stats, rank }: { stats: TrackStats; rank: number }) {
                     <Cell
                       key={i}
                       fill={d.year === peakYear?.year
-                        ? '#c8a96e'
-                        : `rgba(200,169,110,${0.12 + (d.plays / (peakYear?.plays ?? 1)) * 0.5})`
+                        ? '#1DB954'
+                        : `rgba(29,185,84,${0.12 + (d.plays / (peakYear?.plays ?? 1)) * 0.5})`
                       }
                     />
                   ))}
@@ -234,7 +234,7 @@ export function TopTracksPanel({ tracks }: { tracks: Track[] }) {
             {/* Track row */}
             <div
               className="track-row"
-              style={{ cursor: 'pointer', background: isExpanded ? 'rgba(200,169,110,0.04)' : undefined }}
+              style={{ cursor: 'pointer', background: isExpanded ? 'rgba(29,185,84,0.04)' : undefined }}
               onClick={() => toggle(uri)}
             >
               <span style={{

@@ -16,7 +16,7 @@ const CustomTooltip = ({ active, payload }: any) => {
       background: '#1a1a1a', border: '1px solid #2f2f2f', fontFamily: 'DM Mono, monospace'
     }}>
       <p style={{ color: '#e8e4dc', fontWeight: 600 }}>{d.artist_name}</p>
-      <p style={{ color: '#c8a96e' }}>{d.plays?.toLocaleString()} plays</p>
+      <p style={{ color: '#1DB954' }}>{d.plays?.toLocaleString()} plays</p>
       <p style={{ color: '#888' }}>{d.hours?.toFixed(0)} hours</p>
     </div>
   )
@@ -35,7 +35,7 @@ export function TopArtistsChart({ data }: { data: ArtistData[] }) {
         <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,255,255,0.03)' }} />
         <Bar dataKey="plays" radius={[0, 3, 3, 0]}>
           {top.map((_, i) => (
-            <Cell key={i} fill={i === 0 ? '#c8a96e' : i < 3 ? 'rgba(200,169,110,0.5)' : 'rgba(200,169,110,0.2)'} />
+            <Cell key={i} fill={i === 0 ? '#1DB954' : i < 3 ? 'rgba(29,185,84,0.5)' : 'rgba(29,185,84,0.2)'} />
           ))}
         </Bar>
       </BarChart>

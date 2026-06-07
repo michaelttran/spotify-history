@@ -47,7 +47,7 @@ export function HourlyHeatmap({ data }: { data: HourlyData[] }) {
                   style={{
                     height: 18,
                     background: intensity > 0
-                      ? `rgba(200,169,110,${0.08 + intensity * 0.85})`
+                      ? `rgba(29,185,84,${0.08 + intensity * 0.85})`
                       : 'rgba(255,255,255,0.02)',
                   }}
                   title={`${day} ${HOURS[hour]}: ${plays.toLocaleString()} plays`}
@@ -61,7 +61,7 @@ export function HourlyHeatmap({ data }: { data: HourlyData[] }) {
           {[0.05, 0.2, 0.4, 0.65, 0.9].map((v, i) => (
             <div key={i} className="rounded-sm" style={{
               width: 12, height: 12,
-              background: `rgba(200,169,110,${0.08 + v * 0.85})`
+              background: `rgba(29,185,84,${0.08 + v * 0.85})`
             }} />
           ))}
           <span style={{ fontSize: 10, color: '#5a5a5a', fontFamily: 'DM Mono, monospace' }}>more</span>
