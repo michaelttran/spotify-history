@@ -41,10 +41,10 @@ export function YearlyChart({ data }: { data: YearlyData[] }) {
         <YAxis yAxisId="hours" orientation="right" tickLine={false} axisLine={false}
           tickFormatter={v => `${v}h`} width={40} />
         <Tooltip content={<CustomTooltip />} />
-        <Bar yAxisId="plays" dataKey="plays" name="Plays" fill="rgba(200,169,110,0.25)"
+        <Bar yAxisId="plays" dataKey="plays" name="Plays" fill="rgba(29,185,84,0.25)"
           radius={[3, 3, 0, 0]} />
         <Line yAxisId="hours" dataKey="hours_played" name="Hours" type="monotone"
-          stroke="#c8a96e" strokeWidth={2} dot={{ fill: '#c8a96e', r: 3 }} />
+          stroke="#1DB954" strokeWidth={2} dot={{ fill: '#1DB954', r: 3 }} />
       </ComposedChart>
     </ResponsiveContainer>
   )

@@ -119,7 +119,7 @@ export default async function Home() {
         <div style={{
           position: 'absolute', top: -200, right: -140,
           width: 720, height: 720, borderRadius: '50%', pointerEvents: 'none',
-          background: 'radial-gradient(circle, rgba(200,169,110,0.11) 0%, rgba(200,169,110,0.02) 45%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(29,185,84,0.11) 0%, rgba(29,185,84,0.02) 45%, transparent 70%)',
           animation: 'ambient-pulse 14s ease-in-out infinite',
         }} />
         <div style={{
