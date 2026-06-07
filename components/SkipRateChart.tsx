@@ -15,7 +15,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
       background: '#1a1a1a', border: '1px solid #2f2f2f', fontFamily: 'DM Mono, monospace'
     }}>
       <p style={{ color: '#e8e4dc', fontWeight: 600 }}>{label}</p>
-      <p style={{ color: '#9b7bc8' }}>Skip rate: {(payload[0]?.value * 100).toFixed(1)}%</p>
+      <p style={{ color: '#1DB954' }}>Skip rate: {(payload[0]?.value * 100).toFixed(1)}%</p>
     </div>
   )
 }
@@ -29,8 +29,8 @@ export function SkipRateChart({ data }: { data: SkipData[] }) {
         <YAxis tickFormatter={v => `${(v * 100).toFixed(0)}%`} tickLine={false} axisLine={false}
           width={36} tick={{ fontSize: 10 }} />
         <Tooltip content={<CustomTooltip />} />
-        <Line dataKey="skip_rate" type="monotone" stroke="#9b7bc8" strokeWidth={2}
-          dot={{ fill: '#9b7bc8', r: 3 }} />
+        <Line dataKey="skip_rate" type="monotone" stroke="#1DB954" strokeWidth={2}
+          dot={{ fill: '#1DB954', r: 3 }} />
       </LineChart>
     </ResponsiveContainer>
   )
